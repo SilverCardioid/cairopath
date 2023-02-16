@@ -3,17 +3,23 @@ A [Cairo](https://github.com/Kozea/cairocffi) wrapper I created in 2018 to progr
 
 While working on a Cairopath function to parse SVG path strings, I came across an existing vector graphics library named [CairoSVG](https://github.com/Kozea/CairoSVG). My script has since invoked CairoSVG's path module for string input, albeit in a rather hacky way; because CairoSVG's purpose is SVG file conversion, it isn't designed to support direct input of vector data or individual use of its component scripts. [My unfinished fork of the project](https://github.com/SilverCardioid/CairoSVG/) is intended to allow easier use of CairoSVG from a script, and to use its existing code to extend Cairopath's functionality to include other SVG features like text, cloning and groups. In the meantime, though, Cairopath continues to be used in some of my other projects.
 
-## Requirements
+## Installation
+Requirements:
 * [cairocffi](https://github.com/Kozea/cairocffi) (needs a Cairo DLL; see [here](https://github.com/SilverCardioid/CairoSVG#requirements) for more information)
 * [CairoSVG](https://github.com/Kozea/CairoSVG)
 * numpy
+
+Installation using Pip (includes all requirements except the Cairo DLL):
+```
+pip install git+https://github.com/SilverCardioid/cairopath.git
+```
 
 ## Usage
 The module's main class, and the only that needs to be instantiated directly, is `Canvas`. It corresponds to a Cairo `Surface` and `Context` (which are accessible as the object properties `canvas.surface` and `canvas.context` respectively).
 
 In the [constructor](#canvas), the `surfacetype` parameter specifies one of the five Cairo surface types (`'Image'`, `'SVG'`, `'PDF'`, `'PS'` or `'Recording'`), and `filename` the destination filename. Both are optional, as a canvas's `.export()` method can be used to save the canvas in any of the corresponding file types, and will convert the surface type if necessary. Wrappers for exporting to specific formats also exist: `.pdf()`, `.png()`, `.ps()` and `.svg()`. The `.data()` method returns the image as a standard pixel array.
 ```python
-canvas = Canvas(600, 600, bgcolor='#fff')
+canvas = cairosvg.Canvas(600, 600, bgcolor='#fff')
 canvas.png('file.png') # or: canvas.export('Image', 'file.png')
 ```
 
