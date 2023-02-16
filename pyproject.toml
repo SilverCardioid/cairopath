@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "cairopath"
+version = "0.0.1"
+dependencies = ["cairocffi", "CairoSVG", "numpy"]
+
+[tool.setuptools]
+py-modules = ["cairopath"]
