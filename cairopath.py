@@ -25,7 +25,7 @@ def parsesurfacetype(t):
 		return 'Image'
 	elif t == 'svg':
 		return 'SVG'
-	elif t == 'png':
+	elif t == 'pdf':
 		return 'PDF'
 	elif t in ('ps', 'postscript'):
 		return 'PS'
