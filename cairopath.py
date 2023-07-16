@@ -297,7 +297,7 @@ class Path:
  
 	def d(self, string):
 		"""Parse path data from string"""
-		parser = StringParser(self.parent, string)
+		parser = StringParser(self.parent, string, width=self.parent.width, height=self.parent.height)
 		parser.draw()
 		return self
 
@@ -629,10 +629,10 @@ class Transform(Canvas): # allow direct chaining with shape and style functions 
 
 class StringParser:
 	# hacky surrogate for cairosvg's 'Surface' and 'Node' classes
-	def __init__(self, canvas, string):
+	def __init__(self, canvas, string, width=None, height=None):
 		self.context = canvas.context
-		self.context_width = canvas.surface.get_width()
-		self.context_height = canvas.surface.get_height()
+		self.context_width = width or canvas.surface.get_width()
+		self.context_height = height or canvas.surface.get_height()
 		self.dpi = 96
 		self.font_size = _csvg_helpers.size(self, '12pt')
 		self.d = string
