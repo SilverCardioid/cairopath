@@ -19,7 +19,7 @@ The module's main class, and the only that needs to be instantiated directly, is
 
 In the [constructor](#canvas), the `surfacetype` parameter specifies one of the five Cairo surface types (`'Image'`, `'SVG'`, `'PDF'`, `'PS'` or `'Recording'`), and `filename` the destination filename. Both are optional, as a canvas's `.export()` method can be used to save the canvas in any of the corresponding file types, and will convert the surface type if necessary. Wrappers for exporting to specific formats also exist: `.pdf()`, `.png()`, `.ps()` and `.svg()`. The `.data()` method returns the image as a standard pixel array.
 ```python
-canvas = cairosvg.Canvas(600, 600, bgcolor='#fff')
+canvas = cairopath.Canvas(600, 600, bgcolor='#fff')
 canvas.png('file.png') # or: canvas.export('Image', 'file.png')
 ```
 
